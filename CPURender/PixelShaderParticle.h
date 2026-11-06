@@ -1,0 +1,16 @@
+#pragma once
+#include "IPixelShader.h"
+
+class PixelShaderParticle : public IPixelShader
+{
+public:
+    uint32_t ComputePixel(
+        glm::vec3 position, glm::vec3 normal,
+        glm::vec2 uv, glm::vec2 pixelCoords,
+        uint32_t triangleIndex, ConstantBuffer& constantBuffer,
+        Texture* texture, CubeMap* cubeMap, Texture* textureSpecular
+    ) override;
+
+private:
+    glm::vec3 ColorLerp(ConstantBuffer& constantBuffer, uint32_t particleIndex);
+};
